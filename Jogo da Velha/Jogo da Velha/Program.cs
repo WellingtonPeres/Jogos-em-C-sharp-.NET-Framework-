@@ -13,9 +13,15 @@ namespace Jogo_da_Velha
             string[,] matriz = new string[3, 3];
             string turno = "X";
 
+            List<string> indexNumeros = new List<string> {};
+
             int index = 1;
 
             int tentativas = 0;
+
+            Console.WriteLine("-------------------");
+            Console.WriteLine("   JOGO DA VELHA   ");
+            Console.WriteLine("-------------------");
 
             // Alimentando a Matriz.
             for (int i = 0; i < matriz.GetLength(0); i++)
@@ -23,6 +29,7 @@ namespace Jogo_da_Velha
                 for (int j = 0; j < matriz.GetLength(1); j++)
                 {
                     matriz[i, j] = index.ToString();
+                    indexNumeros.Add(index.ToString());
                     index++;
                 }
             }
@@ -37,6 +44,8 @@ namespace Jogo_da_Velha
                 Console.WriteLine();
             }
 
+            Console.WriteLine();
+            Console.Write($"Você quer jogar [{turno}] em qual posição? ");
             string jogada = Console.ReadLine();
 
             Console.Clear();
@@ -44,14 +53,20 @@ namespace Jogo_da_Velha
             // Começa o jogo.
             while (tentativas < 9)
             {
+                Console.WriteLine("-------------------");
+                Console.WriteLine("   JOGO DA VELHA   ");
+                Console.WriteLine("-------------------");
+
+
                 // Substituir o valor na sua respectiva casa.
                 for (int i = 0; i < matriz.GetLength(0); i++)
                 {
                     for (int j = 0; j < matriz.GetLength(1); j++)
                     {
-                        if (matriz[i, j] == jogada)
+                        if (matriz[i, j] == jogada && indexNumeros.Contains(jogada))
                         {
                             matriz[i, j] = turno;
+                            indexNumeros.Remove(jogada);
                         }
                     }
                 }
@@ -66,8 +81,6 @@ namespace Jogo_da_Velha
                     Console.WriteLine();
                 }
 
-                jogada = Console.ReadLine();
-
                 if (turno == "X")
                 {
                     turno = "O";
@@ -76,8 +89,18 @@ namespace Jogo_da_Velha
                 {
                     turno = "X";
                 }
+                Console.WriteLine();
+                Console.Write($"Você quer jogar [{turno}] em qual posição? ");
+                jogada = Console.ReadLine();
 
                 tentativas++;
+
+                while (!indexNumeros.Contains(jogada))
+                {
+                    Console.WriteLine();
+                    Console.Write("Jogada invalida. Tente Novamente: ");
+                    jogada = Console.ReadLine();
+                }
 
                 Console.Clear();
             }
