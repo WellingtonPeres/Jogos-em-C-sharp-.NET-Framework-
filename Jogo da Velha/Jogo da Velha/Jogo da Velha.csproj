@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE595D8B-4363-4BDC-A5DC-6F150F4F837B}</ProjectGuid>
+    <ProjectGuid>{FEA44D6A-F552-4A47-A330-D526EFD7DF68}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Vogo_da_Velha</RootNamespace>
-    <AssemblyName>Vogo da Velha</AssemblyName>
+    <RootNamespace>Jogo_da_Velha</RootNamespace>
+    <AssemblyName>Jogo da Velha</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

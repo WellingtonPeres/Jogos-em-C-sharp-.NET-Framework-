@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vogo_da_Velha
+namespace Jogo_da_Velha
 {
     class Program
     {
@@ -42,7 +42,7 @@ namespace Vogo_da_Velha
             Console.Clear();
 
             // Começa o jogo.
-            while(tentativas < 9)
+            while (tentativas < 9)
             {
                 // Substituir o valor na sua respectiva casa.
                 for (int i = 0; i < matriz.GetLength(0); i++)
@@ -79,7 +79,7 @@ namespace Vogo_da_Velha
 
                 tentativas++;
 
-                Console.Clear();          
+                Console.Clear();
             }
 
             Console.ReadLine();
