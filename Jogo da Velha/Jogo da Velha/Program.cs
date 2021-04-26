@@ -17,7 +17,7 @@ namespace Jogo_da_Velha
 
             int index = 1;
 
-            int tentativas = 0;
+            int tentativas = 1;
 
             Console.WriteLine("-------------------");
             Console.WriteLine("   JOGO DA VELHA   ");
@@ -44,8 +44,7 @@ namespace Jogo_da_Velha
                 Console.WriteLine();
             }
 
-            Console.WriteLine();
-            Console.Write($"Você quer jogar [{turno}] em qual posição? ");
+            Console.Write($"\nVocê quer jogar [{turno}] em qual posição? ");
             string jogada = Console.ReadLine();
 
             Console.Clear();
@@ -56,7 +55,6 @@ namespace Jogo_da_Velha
                 Console.WriteLine("-------------------");
                 Console.WriteLine("   JOGO DA VELHA   ");
                 Console.WriteLine("-------------------");
-
 
                 // Substituir o valor na sua respectiva casa.
                 for (int i = 0; i < matriz.GetLength(0); i++)
@@ -81,6 +79,39 @@ namespace Jogo_da_Velha
                     Console.WriteLine();
                 }
 
+                // Condição de vitória nas Diagonais.
+                if (matriz[0, 0] == matriz[1, 1] && matriz[1, 1] == matriz[2, 2] ||
+                    matriz[0, 2] == matriz[1, 1] && matriz[1, 1] == matriz[2, 0])
+                {
+                    Console.WriteLine("\n--------------");
+                    Console.WriteLine("Fim de Jogo!!!");
+                    Console.WriteLine("--------------");
+                    Console.WriteLine($"\nParabéns!!! O ganhador é [{turno}].");
+                    break;
+                }
+                // Condição de vitória nas Linhas.
+                if (matriz[0, 0] == matriz[0, 1] && matriz[0, 1] == matriz[0, 2] ||
+                    matriz[1, 0] == matriz[1, 1] && matriz[1, 1] == matriz[1, 2] ||
+                    matriz[2, 0] == matriz[2, 1] && matriz[2, 1] == matriz[2, 2])
+                {
+                    Console.WriteLine("\n--------------");
+                    Console.WriteLine("Fim de Jogo!!!");
+                    Console.WriteLine("--------------");
+                    Console.WriteLine($"\nParabéns!!! O ganhador é [{turno}].");
+                    break;
+                }
+                // Condição de vitória nas Colunas.
+                if (matriz[0, 0] == matriz[1, 0] && matriz[1, 0] == matriz[2, 0] ||
+                    matriz[0, 1] == matriz[1, 1] && matriz[1, 1] == matriz[2, 1] ||
+                    matriz[0, 2] == matriz[1, 2] && matriz[1, 2] == matriz[2, 2])
+                {
+                    Console.WriteLine("\n--------------");
+                    Console.WriteLine("Fim de Jogo!!!");
+                    Console.WriteLine("--------------");
+                    Console.WriteLine($"\nParabéns!!! O ganhador é [{turno}].");
+                    break;
+                }
+
                 if (turno == "X")
                 {
                     turno = "O";
@@ -89,11 +120,10 @@ namespace Jogo_da_Velha
                 {
                     turno = "X";
                 }
+
                 Console.WriteLine();
                 Console.Write($"Você quer jogar [{turno}] em qual posição? ");
                 jogada = Console.ReadLine();
-
-                tentativas++;
 
                 while (!indexNumeros.Contains(jogada))
                 {
@@ -102,7 +132,29 @@ namespace Jogo_da_Velha
                     jogada = Console.ReadLine();
                 }
 
+                tentativas++;
+
                 Console.Clear();
+            }
+            if (tentativas == 9)
+            {
+                Console.WriteLine("-------------------");
+                Console.WriteLine("   JOGO DA VELHA   ");
+                Console.WriteLine("-------------------");
+
+                for (int i = 0; i < matriz.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matriz.GetLength(1); j++)
+                    {
+                        Console.Write($" [{matriz[i, j]}] ");
+                    }
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine("\n--------------");
+                Console.WriteLine("Fim de Jogo!!!");
+                Console.WriteLine("--------------");
+                Console.WriteLine($"\nQue triste!!! Ninguém ganhou.");
             }
 
             Console.ReadLine();
